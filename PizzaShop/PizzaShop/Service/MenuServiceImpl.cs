@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using PizzaShop.Data;
 using PizzaShop.Models;
 
@@ -31,9 +32,18 @@ namespace PizzaShop.Service
 
         public void UpdateMenubyId(int id, Menu menu)
         {
-            menu.SetMenuID(id);
-            store.UpdateMenu(menu);
-
+            try
+            {
+                if (menuIdSequence>=id)
+                {
+                    menu.SetMenuID(id);
+                    store.UpdateMenu(menu);
+                }
+            }
+            catch
+            {
+                throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
+            }
         }
     }
 }

@@ -9,9 +9,33 @@ namespace PizzaShop.Data
     public class StorageInMemory : IStorage
     {
         private static Dictionary<int, Menu> menuStore = new Dictionary<int, Menu>();
+        private static Dictionary<int, Order> orderStore = new Dictionary<int, Order>();
 
         static StorageInMemory()
         {
+            OrderItems io1 = new OrderItems();
+            io1.ItemName = "Non Veg Pizza";
+            io1.ItemPrice = 11;
+            io1.Quantity = 2;
+            io1.itemTotal = io1.ItemPrice * io1.Quantity;
+
+            OrderItems io2 = new OrderItems();
+            io2.ItemName = "Veg Pizza";
+            io2.ItemPrice = 10;
+            io2.Quantity = 2;
+            io2.itemTotal = io2.ItemPrice * io2.Quantity;
+
+            OrderItems io3 = new OrderItems();
+            io3.ItemName = "Coke";
+            io3.ItemPrice = 2;
+            io3.Quantity = 4;
+            io3.itemTotal = io3.ItemPrice * io1.Quantity;
+
+            Order o1 = new Order();
+            o1.SetOrderId(100);
+            o1.SetOrderItems(new List<OrderItems> { io1, io2, io3 });
+
+            orderStore.Add(o1.GetOrderId(),o1);
             //Item i1 = new Item();
             //i1.ItemName = "Cheese Pizza";
             //i1.ItemPrice = 10;
@@ -57,6 +81,11 @@ namespace PizzaShop.Data
             menuStore.Add(menu.GetMenuID(),menu);
         }
 
+        public void CreateOrder(Order order)
+        {
+            orderStore.Add(order.GetOrderId(), order);
+        }
+
         public List<Menu> ReadAllMenus()
         {
            List<Menu> menuList = new List<Menu>();
@@ -68,14 +97,34 @@ namespace PizzaShop.Data
             return menuList; 
         }
 
+        public List<Order> ReadAllOrders()
+        {
+            List<Order> orderList = new List<Order>();
+            foreach(var order in orderStore)
+            {
+                orderList.Add(order.Value);
+            }
+            return orderList;
+        }
+
         public Menu ReadMenuById(int id)
         {
             return menuStore[id];
         }
 
+        public Order ReadOrderById(int id)
+        {
+            return orderStore[id];
+        }
+
         public void UpdateMenu(Menu menu)
         {
             menuStore[menu.GetMenuID()] = menu;
+        }
+
+        public void UpdateOrder(Order order)
+        {
+            orderStore[order.GetOrderId()] = order;
         }
     }
 }
