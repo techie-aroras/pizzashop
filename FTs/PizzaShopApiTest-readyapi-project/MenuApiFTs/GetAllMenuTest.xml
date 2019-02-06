@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="da724899-131f-4067-9392-f203b2b53dcd" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="GetAllMenuTest" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="da724899-131f-4067-9392-f203b2b53dcdfileName">GetAllMenuTest</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="REST Request" id="99605ad1-7494-4e37-8902-7ef288b7d5f8">
+    <con:settings/>
+    <con:config service="PizzaShopApi" resourcePath="/api/Menu/{id}" methodName="GetMenu" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Request" id="fa6798cb-6b43-47b2-b5ca-bd810d85e129" mediaType="application/json">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>http://localhost:55298</con:endpoint>
+        <con:request/>
+        <con:originalUri>http://localhost/api/Menu/</con:originalUri>
+        <con:assertion type="JsonPath Count" id="55f4a87c-f138-495d-8611-4d4571ea3b32" name="Check count of [menuID]">
+          <con:configuration>
+            <path>$[*]['menuID']</path>
+            <content>5</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Existence Match" id="bdc711ed-25bd-4e6d-9b09-75c2a23de6ca" name="Check for existence of [ItemName]">
+          <con:configuration>
+            <path>$[0]['menuItems'][0]['ItemName']</path>
+            <content>true</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="Simple NotContains" id="9261de57-c869-446e-af24-0e672d8eed54" name="Not Contains">
+          <con:configuration>
+            <token>Pork</token>
+            <ignoreCase>true</ignoreCase>
+            <useRegEx>false</useRegEx>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="Valid HTTP Status Codes" id="489deac6-978c-49da-be0f-4e425f8d72a4" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters/>
+        <con:parameterOrder>
+          <con:entry>id</con:entry>
+        </con:parameterOrder>
+        <con:environmentSpec>
+          <con:entry environmentId="a33093f8-6309-4424-9a49-27dbf11f605b">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

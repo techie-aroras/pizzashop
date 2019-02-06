@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="d87fcf28-1861-4817-b70d-c0965503c5f4" name="MenuApiFTs" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="d87fcf28-1861-4817-b70d-c0965503c5f4fileName">MenuApiFTs</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testSuite>
