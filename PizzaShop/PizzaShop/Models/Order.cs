@@ -20,14 +20,14 @@ namespace PizzaShop.Models
             orderId = value;
         }
 
-        private List<OrderItems> orderItems;
+        private List<OrderItem> orderItems;
 
-        public List<OrderItems> GetOrderItems()
+        public List<OrderItem> GetOrderItems()
         {
             return orderItems;
         }
 
-        public void SetOrderItems(List<OrderItems> value)
+        public void SetOrderItems(List<OrderItem> value)
         {
             orderItems = value;
         }
@@ -39,7 +39,7 @@ namespace PizzaShop.Models
             return totalAmount;
         }
 
-        private void SetTotalAmount(double value)
+        public void SetTotalAmount(double value)
         {
             totalAmount = value;
         }

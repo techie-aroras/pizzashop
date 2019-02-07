@@ -1,3 +1,10 @@
 PizzaShopApi\Menu.xml
+PizzaShopApi\Order.xml
 MenuApiFTs\GetAllMenuTest.xml
 MenuApiFTs\GetMenuByIdTest.xml
+MenuApiFTs\CreateMenuTest.xml
+MenuApiFTs\UpdateMenuTest.xml
+OrderApiFTs\GetAllOrdersTest.xml
+OrderApiFTs\GetOrderByIdTest.xml
+OrderApiFTs\CreateOrderTest.xml
+OrderApiFTs\UpdateOrderTest.xml

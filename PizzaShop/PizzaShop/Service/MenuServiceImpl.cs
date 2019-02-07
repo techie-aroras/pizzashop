@@ -29,21 +29,16 @@ namespace PizzaShop.Service
         {
             return store.ReadMenuById(id);
         }
-
+        
         public void UpdateMenubyId(int id, Menu menu)
         {
-            try
-            {
                 if (menuIdSequence>=id)
                 {
                     menu.SetMenuID(id);
                     store.UpdateMenu(menu);
                 }
-            }
-            catch
-            {
-                throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
-            }
+                else
+                    throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);
         }
     }
 }

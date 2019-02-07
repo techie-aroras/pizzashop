@@ -10,32 +10,32 @@ namespace PizzaShop.Data
     {
         private static Dictionary<int, Menu> menuStore = new Dictionary<int, Menu>();
         private static Dictionary<int, Order> orderStore = new Dictionary<int, Order>();
-
+       
         static StorageInMemory()
         {
-            OrderItems io1 = new OrderItems();
-            io1.ItemName = "Non Veg Pizza";
-            io1.ItemPrice = 11;
-            io1.Quantity = 2;
-            io1.itemTotal = io1.ItemPrice * io1.Quantity;
+            //OrderItems io1 = new OrderItems();
+            //io1.ItemName = "Non Veg Pizza";
+            //io1.ItemPrice = 11;
+            //io1.Quantity = 2;
+            //io1.itemTotal = io1.ItemPrice * io1.Quantity;
 
-            OrderItems io2 = new OrderItems();
-            io2.ItemName = "Veg Pizza";
-            io2.ItemPrice = 10;
-            io2.Quantity = 2;
-            io2.itemTotal = io2.ItemPrice * io2.Quantity;
+            //OrderItems io2 = new OrderItems();
+            //io2.ItemName = "Veg Pizza";
+            //io2.ItemPrice = 10;
+            //io2.Quantity = 2;
+            //io2.itemTotal = io2.ItemPrice * io2.Quantity;
 
-            OrderItems io3 = new OrderItems();
-            io3.ItemName = "Coke";
-            io3.ItemPrice = 2;
-            io3.Quantity = 4;
-            io3.itemTotal = io3.ItemPrice * io1.Quantity;
+            //OrderItems io3 = new OrderItems();
+            //io3.ItemName = "Coke";
+            //io3.ItemPrice = 2;
+            //io3.Quantity = 4;
+            //io3.itemTotal = io3.ItemPrice * io1.Quantity;
 
-            Order o1 = new Order();
-            o1.SetOrderId(100);
-            o1.SetOrderItems(new List<OrderItems> { io1, io2, io3 });
+            //Order o1 = new Order();
+            //o1.SetOrderId(100);
+            //o1.SetOrderItems(new List<OrderItems> { io1, io2, io3 });
 
-            orderStore.Add(o1.GetOrderId(),o1);
+            //orderStore.Add(o1.GetOrderId(),o1);
             //Item i1 = new Item();
             //i1.ItemName = "Cheese Pizza";
             //i1.ItemPrice = 10;
@@ -104,6 +104,7 @@ namespace PizzaShop.Data
             {
                 orderList.Add(order.Value);
             }
+
             return orderList;
         }
 

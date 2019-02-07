@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using PizzaShop.Data;
 using PizzaShop.Models;
 
@@ -11,10 +12,22 @@ namespace PizzaShop.Service
     {
         private IStorage storeOrders = new StorageInMemory();
 
+        private static int orderIdSequence = 100;
+        private static Order CalculateTotals(Order order)
+        {
+            order.SetTotalAmount(0);
+            foreach (var orderItem in order.GetOrderItems())
+            {
+                orderItem.SetItemTotal(orderItem.GetQuantity() * orderItem.GetItemPrice());
+                order.SetTotalAmount(orderItem.GetItemTotal() + order.GetTotalAmount());
+            }
+            return order;
+        }
         public int CreateOrder(Order order)
         {
-            storeOrders.CreateOrder(order);
-            return 0;
+            order.SetOrderId(++orderIdSequence);
+            storeOrders.CreateOrder(CalculateTotals(order));
+            return orderIdSequence;
         }
 
         public List<Order> GetAllOrders()
@@ -29,8 +42,13 @@ namespace PizzaShop.Service
 
         public void UpdateOrderbyId(int id, Order order)
         {
-            order.SetOrderId(id);
-            storeOrders.UpdateOrder(order);
+            if (orderIdSequence >= id)
+            {
+                order.SetOrderId(id);
+                storeOrders.UpdateOrder(CalculateTotals(order));
+            }
+            else
+                throw new HttpResponseException(System.Net.HttpStatusCode.NotFound);     
         }
     }
 }

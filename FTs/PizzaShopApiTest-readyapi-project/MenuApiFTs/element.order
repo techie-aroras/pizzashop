@@ -1,2 +1,4 @@
 GetAllMenuTest.xml
 GetMenuByIdTest.xml
+CreateMenuTest.xml
+UpdateMenuTest.xml

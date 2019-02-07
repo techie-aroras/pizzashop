@@ -27,6 +27,12 @@
       <con:params/>
       <con:element xmlns:menu="http://localhost/api/Menu">menu:Response</con:element>
     </con:representation>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json; charset=utf-8</con:mediaType>
+      <con:status>500</con:status>
+      <con:params/>
+      <con:element xmlns:menu="http://localhost/api/Menu/">menu:Fault</con:element>
+    </con:representation>
     <con:request name="GetAllMenu" id="fa6798cb-6b43-47b2-b5ca-bd810d85e129" mediaType="application/json">
       <con:settings>
         <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
@@ -123,6 +129,57 @@
       <con:jmsPropertyConfig/>
       <con:parameters>
         <entry key="id" value="" xmlns="http://eviware.com/soapui/config"/>
+      </con:parameters>
+      <con:parameterOrder>
+        <con:entry>id</con:entry>
+      </con:parameterOrder>
+    </con:request>
+  </con:method>
+  <con:method name="PutMenu" id="e74dd160-4591-43d3-bb71-12b819870ff4" method="PUT">
+    <con:settings/>
+    <con:parameters/>
+    <con:representation type="FAULT">
+      <con:mediaType>application/json; charset=utf-8</con:mediaType>
+      <con:status>500</con:status>
+      <con:params/>
+      <con:element xmlns:menu="http://localhost/api/Menu/">menu:Fault</con:element>
+    </con:representation>
+    <con:representation type="REQUEST">
+      <con:mediaType>application/json</con:mediaType>
+      <con:params/>
+    </con:representation>
+    <con:representation type="RESPONSE">
+      <con:mediaType>application/json; charset=utf-8</con:mediaType>
+      <con:status>200</con:status>
+      <con:params/>
+      <con:element>Response</con:element>
+    </con:representation>
+    <con:request name="UpdateMenu" id="46fc5713-0f95-46fd-83aa-d9bf1c6ee821" mediaType="application/json" postQueryString="false">
+      <con:settings>
+        <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+      </con:settings>
+      <con:request>{
+    "menuItems": [
+        {
+            "ItemName": "Meat Loverz Pizza",
+            "ItemPrice": 12,
+            "ItemCalories": 250
+        },
+        {
+            "ItemName": "Coke",
+            "ItemPrice": 2,
+            "ItemCalories": 100
+        }
+    ]
+}</con:request>
+      <con:originalUri>http://localhost/api/Menu/</con:originalUri>
+      <con:credentials>
+        <con:authType>No Authorization</con:authType>
+      </con:credentials>
+      <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+      <con:jmsPropertyConfig/>
+      <con:parameters>
+        <entry key="id" value="1" xmlns="http://eviware.com/soapui/config"/>
       </con:parameters>
       <con:parameterOrder>
         <con:entry>id</con:entry>

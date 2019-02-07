@@ -14,15 +14,6 @@
         <con:endpoint>http://localhost:55298</con:endpoint>
         <con:request/>
         <con:originalUri>http://localhost/api/Menu/</con:originalUri>
-        <con:assertion type="JsonPath Count" id="55f4a87c-f138-495d-8611-4d4571ea3b32" name="Check count of [menuID]">
-          <con:configuration>
-            <path>$[*]['menuID']</path>
-            <content>5</content>
-            <allowWildcards>false</allowWildcards>
-            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
-            <ignoreComments>false</ignoreComments>
-          </con:configuration>
-        </con:assertion>
         <con:assertion type="JsonPath Existence Match" id="bdc711ed-25bd-4e6d-9b09-75c2a23de6ca" name="Check for existence of [ItemName]">
           <con:configuration>
             <path>$[0]['menuItems'][0]['ItemName']</path>

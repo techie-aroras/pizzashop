@@ -35,7 +35,16 @@ namespace PizzaShop.Controllers
         [HttpPut]
         public void UpdateMenuById(int id, [FromBody]Menu menu)
         {
-            svc.UpdateMenubyId(id, menu);
+            try
+            {
+                svc.UpdateMenubyId(id, menu);
+            }
+            catch (Exception ex)
+            {
+                HttpResponseMessage httpResponseMsg = new HttpResponseMessage(HttpStatusCode.NotFound);
+                httpResponseMsg.Content = new StringContent(ex.Message);
+                throw new HttpResponseException(httpResponseMsg);
+            }
         }
     }
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="8561e167-b0e6-4a07-b53e-beb198dfd264" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="UpdateOrderTest" searchProperties="true" timeout="0" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="8561e167-b0e6-4a07-b53e-beb198dfd264fileName">UpdateOrderTest</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="restrequest" name="REST Request" id="bb3a509e-303c-43a4-8573-a2c8c7ce57b3">
+    <con:settings/>
+    <con:config service="PizzaShopApi" resourcePath="/api/order/{id}" methodName="PutOrder" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="REST Request" id="d0493976-90eb-401f-bbab-f4f328fd63c7" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:request>{
+    "orderItems": [
+        {
+            "itemName": "Non Veg Pizza",
+            "itemPrice": 21,
+            "quantity": 2
+        },
+        {
+            "itemName": "Veg Pizza",
+            "itemPrice": 10,
+            "quantity": 2
+        },
+        {
+            "itemName": "Coke",
+            "itemPrice": 2,
+            "quantity": 4
+        }
+    ]
+}</con:request>
+        <con:originalUri>http://localhost/api/order/</con:originalUri>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+          <con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:parameters>
+          <entry key="id" value="101" xmlns="http://eviware.com/soapui/config"/>
+        </con:parameters>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+</con:testCase>

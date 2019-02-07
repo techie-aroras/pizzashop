@@ -34,7 +34,16 @@ namespace PizzaShop.Controllers
         [HttpPut]
         public void UpdateOrderById(int id, [FromBody]Order order)
         {
-            osvc.UpdateOrderbyId(id, order);
+            try
+            {
+                osvc.UpdateOrderbyId(id, order);
+            }
+            catch (Exception ex)
+            {
+                HttpResponseMessage httpResponseMsg = new HttpResponseMessage(HttpStatusCode.NotFound);
+                httpResponseMsg.Content = new StringContent(ex.Message);
+                throw new HttpResponseException(httpResponseMsg);
+            }
         }
     }
 }
